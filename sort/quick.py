@@ -7,9 +7,7 @@ for i in range(randint(2,10)):
 
 def quick(ite):
     if len(ite) > 1:
-       less = []
-       equal
-      reference_element = ite[randint(0,len(ite) - 1)
+      reference_element = ite[randint(0,len(ite) - 1)]
       less = [i for i in ite if i < reference_element]
       equal = [i for i in ite if i == reference_element]
       more = [i for i in ite if i > reference_element]
