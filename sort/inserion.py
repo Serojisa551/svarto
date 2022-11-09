@@ -18,4 +18,5 @@ def inserion(ite):
     return ite
 
 
-print(creating_list())
+if __name__ == "__main__":
+    print(creating_list())
