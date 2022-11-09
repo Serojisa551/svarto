@@ -17,8 +17,9 @@ def selection(lst):
             if lst[modul] > lst[j]:
                 modul = j
         lst[i], lst[modul] = lst[modul], lst[i]
-    print("after",end="" )
+    print("after", end="")
     return lst
 
 
-print(creating_list())
+if __name__ == "__main__":
+    print(creating_list())
