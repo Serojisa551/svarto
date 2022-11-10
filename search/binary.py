@@ -38,9 +38,8 @@ def binary(ite, key=randint(0, 10)):
                 bottom_line = middle + 1
         middle = (bottom_line + index) // 2
         length //= 2
-
-
-print(creating_list())
+if __name__ == "__main__":
+    print(creating_list())
 
 
 def Test_binary():
@@ -51,4 +50,4 @@ def Test_binary():
         return True
 
 
-#print(Test_binary())
+# print(Test_binary())
