@@ -1,12 +1,12 @@
 from random import randint
-lst = []
+from insertion import my_print
 
 
 def creating_list():
     lst = []
     for i in range(randint(2, 10)):
         lst.append(randint(0, 10))
-    print("before", lst)
+    my_print("before", lst)
     return selection(lst)
 
 
@@ -17,9 +17,9 @@ def selection(lst):
             if lst[modul] > lst[j]:
                 modul = j
         lst[i], lst[modul] = lst[modul], lst[i]
-    print("after", end="")
+    my_print("after")
     return lst
 
 
 if __name__ == "__main__":
-    print(creating_list())
+    my_print(creating_list())
