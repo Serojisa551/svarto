@@ -1,11 +1,16 @@
 from random import randint
 
 
+def my_print(*object):
+    for element in object:
+        print(element)
+
+
 def creating_list():
     lst = []
     for i in range(randint(2, 10)):
         lst.append(randint(0, 10))
-    print("before", lst)
+    my_print("before", lst)
     return inserion(lst)
 
 
@@ -14,9 +19,9 @@ def inserion(ite):
         for j in range(i, 0, -1):
             if ite[j] < ite[j - 1]:
                 ite[j], ite[j-1] = ite[j-1], ite[j]
-    print("after", end="")
+    my_print("after")
     return ite
 
 
 if __name__ == "__main__":
-    print(creating_list())
+    my_print(creating_list())
