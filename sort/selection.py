@@ -7,7 +7,7 @@ def creating_list():
     for i in range(randint(2, 10)):
         lst.append(randint(0, 10))
     my_print("before", lst)
-    return selection(lst)
+    return lst
 
 
 def selection(lst):
@@ -22,4 +22,4 @@ def selection(lst):
 
 
 if __name__ == "__main__":
-    my_print(creating_list())
+    my_print(selection(creating_list()))
