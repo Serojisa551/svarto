@@ -11,10 +11,10 @@ def creating_list():
     for i in range(randint(2, 10)):
         lst.append(randint(0, 10))
     my_print("before", lst)
-    return inserion(lst)
+    return lst
 
 
-def inserion(ite):
+def insertion(ite):
     for i in range(1, len(ite)):
         for j in range(i, 0, -1):
             if ite[j] < ite[j - 1]:
@@ -24,4 +24,4 @@ def inserion(ite):
 
 
 if __name__ == "__main__":
-    my_print(creating_list())
+    my_print(insertion(creating_list()))
