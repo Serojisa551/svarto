@@ -1,13 +1,6 @@
 from random import randint
 from insertion import my_print
-
-
-def creating_list():
-    lst = []
-    for i in range(randint(2, 10)):
-        lst.append(randint(0, 10))
-    my_print("before", lst)
-    return lst
+from insertion import creating_list
 
 
 def bubble(ite):
