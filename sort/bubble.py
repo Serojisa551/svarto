@@ -1,4 +1,3 @@
-from random import randint
 from insertion import my_print
 from insertion import creating_list
 
