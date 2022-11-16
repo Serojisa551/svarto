@@ -1,11 +1,5 @@
 from random import randint
-
-
-def creating_list():
-    lst = []
-    for i in range(randint(2, 10)):
-        lst.append(randint(0, 10))
-    return bubbel(lst)
+from linear import creating_list, my_print
 
 
 def bubbel(ite):
@@ -13,12 +7,12 @@ def bubbel(ite):
         for j in range(len(ite)):
             if (ite[i] < ite[j]):
                 ite[i], ite[j] = ite[j], ite[i]
-    print(ite)
-    return binary(ite)
+    my_print(ite)
+    return ite
 
 
-def binary(ite, key=randint(0, 10)):
-    print("key -", key)
+def binary(ite, key):
+    my_print("key", key,)
     length = len(ite)
     index = len(ite) - 1
     bottom_line = 0
@@ -39,8 +33,10 @@ def binary(ite, key=randint(0, 10)):
         middle = (bottom_line + index) // 2
         length //= 2
 if __name__ == "__main__":
-    print(creating_list())
-
+    modul = creating_list()
+    modul =bubbel(modul)
+    modul = binary(modul, key = randint(0, 10))
+    my_print(modul)
 
 def Test_binary():
     for i in range(100):
@@ -50,4 +46,4 @@ def Test_binary():
         return True
 
 
-# print(Test_binary())
+# my_print(Test_binary())
