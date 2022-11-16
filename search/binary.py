@@ -2,7 +2,7 @@ from random import randint
 from linear import creating_list, my_print
 
 
-def bubbel(ite):
+def bubble(ite):
     for i in range(len(ite)):
         for j in range(len(ite)):
             if (ite[i] < ite[j]):
@@ -34,16 +34,6 @@ def binary(ite, key):
         length //= 2
 if __name__ == "__main__":
     modul = creating_list()
-    modul =bubbel(modul)
+    modul =bubble(modul)
     modul = binary(modul, key = randint(0, 10))
     my_print(modul)
-
-def Test_binary():
-    for i in range(100):
-        if None == creating_list():
-            return False
-    else:
-        return True
-
-
-# my_print(Test_binary())
