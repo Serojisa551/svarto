@@ -8,7 +8,7 @@ def jump(iter, quntity, key):
         elif iter[i] > key:
             return linear(iter[i-quntity: i], key)
     else:
-        my_print(linear(iter[i:], key))
+        return linear(iter[i:], key)
 
 
 if __name__ == "__main__":
