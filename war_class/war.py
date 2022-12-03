@@ -8,7 +8,7 @@ class Weapon:
         self.__damage = damage
 
     def get_damage(self):
-        return self.__damage 
+        return self.__damage
 
     def set_bullet(self, bullet):
         self.__bullet = bullet
@@ -31,6 +31,7 @@ class Weapon:
 
 class Warrior:
     number = 0
+
     def __init__(self, name, nationality, weapon, live):
         self.set_name(name)
         self.set_nationality(nationality)
@@ -64,9 +65,10 @@ class Warrior:
 
     def shot(self, warrior):
         warrior.set_live(self.get_live() - warrior.get_weapon().get_damage())
-        warrior.get_weapon().set_bullet(warrior.get_weapon().get_bullet() - 1) 
+        warrior.get_weapon().set_bullet(warrior.get_weapon().get_bullet() - 1)
         # self.set_live(self.get_live() - warrior.get_weapon().get_damage())
         # warrior.get_weapon().set_bullet(warrior.get_weapon().get_bullet() - 1)
+
 
 class War:
     def __init__(self, weapon, warrior):
@@ -75,7 +77,7 @@ class War:
 
     def set_warrior(self, warrior):
         self.__warrior = warrior
-    
+
     def get_warrior(self):
         return self.__warrior
 
@@ -86,10 +88,10 @@ class War:
         return self.__weapon
 
     def shoting(target, shooter):
-        
+
         quentity = 0
         for i in range(500):
-            
+
             target.shot(shooter)
             # print("shooter.get_live()",shooter.get_live())
             # print("shooter.get_warrior().get_naem()",  )
@@ -112,8 +114,7 @@ aka_47_2 = Weapon("aka 47", 30, 10)
 viserion = Weapon("dragon", 1, 100)
 jemas_bond = Warrior("Jemas Bond", "UAS", tt, 100)
 rembo = Warrior("Rembo", "UAS", aka_47, 100)
-daenerys_targaryen = Warrior(
-    "Daenerys Targaryen", "Dragon Stone", viserion, 100)
+daenerys_targaryen = Warrior("Daenerys Targaryen", "Dragon Stone", viserion, 100)
 tony_montana = Warrior("Tony Montana", "Italy", aka_47_2, 100)
 thomas_shelby = Warrior("Thomas Shelby", "Gypsies", revolver, 100)
 
