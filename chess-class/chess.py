@@ -1,6 +1,20 @@
 class Board:
-    def __init__(self, big):
+    def __init__(self, big, pawns):
         self.big = big
+        index = -1
+        element_one = 0
+        for i in pawns[0]:  #
+            index += 1
+            if index == 1:
+                self.big[6][element_one] = i.get_u_number()
+            self.big[6][index] = i.get_u_number()
+            if index == 7:
+                index = -1
+        for i in pawns[1]:
+            index += 1
+            if index == 1:
+                self.big[1][element_one] = i.get_u_number()
+            self.big[1][index] = i.get_u_number()  #
         self.big[7][3] = white_queen.get_u_number()
         self.big[7][4] = white_king.get_u_number()
         self.big[0][3] = black_queen.get_u_number()
@@ -17,22 +31,6 @@ class Board:
         self.big[7][7] = white_rook_two.get_u_number()
         self.big[0][0] = black_rook_two.get_u_number()
         self.big[0][7] = black_rook_one.get_u_number()
-        self.big[6][0] = white_pawn_one.get_u_number()
-        self.big[6][1] = white_pawn_two.get_u_number()
-        self.big[6][2] = white_pawn_three.get_u_number()
-        self.big[6][3] = white_pawn_four.get_u_number()
-        self.big[6][4] = white_pawn_five.get_u_number()
-        self.big[6][5] = white_pawn_six.get_u_number()
-        self.big[6][6] = white_pawn_seven.get_u_number()
-        self.big[6][7] = white_pawn_eight.get_u_number()
-        self.big[1][0] = black_pawn_one.get_u_number()
-        self.big[1][1] = black_pawn_two.get_u_number()
-        self.big[1][2] = black_pawn_three.get_u_number()
-        self.big[1][3] = black_pawn_four.get_u_number()
-        self.big[1][4] = black_pawn_five.get_u_number()
-        self.big[1][5] = black_pawn_six.get_u_number()
-        self.big[1][6] = black_pawn_seven.get_u_number()
-        self.big[1][7] = black_pawn_eight.get_u_number()
 
     def __repr__(self):
         res = ""
@@ -73,28 +71,42 @@ class Figure:
         return self.__u_number
 
 
-# class Game:
-#     def moves(a):
-#         if a.get_view() == "pawn":
-#             if a.get_color() == "white":
+class Game:
+    pass
 
 
-white_pawn_one = Figure("white", "pawn", 1, chr(9823))
-white_pawn_two = Figure("white", "pawn", 1, chr(9823))
-white_pawn_three = Figure("white", "pawn", 1, chr(9823))
-white_pawn_four = Figure("white", "pawn", 1, chr(9823))
-white_pawn_five = Figure("white", "pawn", 1, chr(9823))
-white_pawn_six = Figure("white", "pawn", 1, chr(9823))
-white_pawn_seven = Figure("white", "pawn", 1, chr(9823))
-white_pawn_eight = Figure("white", "pawn", 1, chr(9823))
-black_pawn_one = Figure("black", "pawn", 1, chr(9817))
-black_pawn_two = Figure("black", "pawn", 1, chr(9817))
-black_pawn_three = Figure("black", "pawn", 1, chr(9817))
-black_pawn_four = Figure("black", "pawn", 1, chr(9817))
-black_pawn_five = Figure("black", "pawn", 1, chr(9817))
-black_pawn_six = Figure("black", "pawn", 1, chr(9817))
-black_pawn_seven = Figure("black", "pawn", 1, chr(9817))
-black_pawn_eight = Figure("black", "pawn", 1, chr(9817))
+def make_pawn():
+    tpl_name_pawn = (
+        "white_pawn_one",
+        "white_pawn_two",
+        "white_pawn_three",
+        "white_pawn_four",
+        "white_pawn_five",
+        "white_pawn_six",
+        "white_pawn_seven",
+        "white_pawn_eight",
+        "black_pawn_one",
+        "black_pawn_two",
+        "black_pawn_three",
+        "black_pawn_four",
+        "black_pawn_five",
+        "black_pawn_six",
+        "black_pawn_seven",
+        "black_pawn_eight",
+    )
+    set_white_pawn = set({})
+    set_black_pawn = set({})
+    for i in tpl_name_pawn:
+        if i[0] == "w":
+            i = Figure("white", "pawn", 1, chr(9823))
+            set_white_pawn.add(i)
+        else:
+            i = Figure("black", "pawn", 1, chr(9817))
+            set_black_pawn.add(i)
+
+    return set_white_pawn, set_black_pawn
+
+
 black_rook_one = Figure("black", "rook", 5, chr(9814))
 black_rook_two = Figure("black", "rook", 5, chr(9814))
 white_rook_one = Figure("white", "rook", 5, chr(9820))
@@ -112,12 +124,14 @@ white_queen = Figure("white", "queen", 9, chr(9819))
 black_king = Figure("black", "knig", 10, chr(9812))
 white_king = Figure("white", "knig", 10, chr(9818))
 
-board = [["◻", "◼"] * 4 for i in range(4)]
-board1 = [["◼", "◻"] * 4 for i in range(4)]
-big = []
-for i in range(0, 4):
-    big.append(board1[i])
-    big.append(board[i])
 
-print(Board(big))
-# print(Game.moves(white_pawn_one))
+def make_board():
+    board = [["◻", "◼"] * 4 for i in range(4)]
+    board1 = [["◼", "◻"] * 4 for i in range(4)]
+    big = []
+    for i in range(0, 4):
+        big.append(board1[i])
+        big.append(board[i])
+    return big
+
+print(Board(make_board(), make_pawn()))
