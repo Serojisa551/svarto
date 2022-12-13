@@ -74,37 +74,48 @@ class Figure:
 class Game:
     pass
 
+class Make:
+    @staticmethod
+    def make_pawn():
+        tpl_name_pawn = (
+            "white_pawn_one",
+            "white_pawn_two",
+            "white_pawn_three",
+            "white_pawn_four",
+            "white_pawn_five",
+            "white_pawn_six",
+            "white_pawn_seven",
+            "white_pawn_eight",
+            "black_pawn_one",
+            "black_pawn_two",
+            "black_pawn_three",
+            "black_pawn_four",
+            "black_pawn_five",
+            "black_pawn_six",
+            "black_pawn_seven",
+            "black_pawn_eight",
+        )
+        set_white_pawn = set({})
+        set_black_pawn = set({})
+        for i in tpl_name_pawn:
+            if i[0] == "w":
+                i = Figure("white", "pawn", 1, chr(9823))
+                set_white_pawn.add(i)
+            else:
+                i = Figure("black", "pawn", 1, chr(9817))
+                set_black_pawn.add(i)
+        return set_white_pawn, set_black_pawn
 
-def make_pawn():
-    tpl_name_pawn = (
-        "white_pawn_one",
-        "white_pawn_two",
-        "white_pawn_three",
-        "white_pawn_four",
-        "white_pawn_five",
-        "white_pawn_six",
-        "white_pawn_seven",
-        "white_pawn_eight",
-        "black_pawn_one",
-        "black_pawn_two",
-        "black_pawn_three",
-        "black_pawn_four",
-        "black_pawn_five",
-        "black_pawn_six",
-        "black_pawn_seven",
-        "black_pawn_eight",
-    )
-    set_white_pawn = set({})
-    set_black_pawn = set({})
-    for i in tpl_name_pawn:
-        if i[0] == "w":
-            i = Figure("white", "pawn", 1, chr(9823))
-            set_white_pawn.add(i)
-        else:
-            i = Figure("black", "pawn", 1, chr(9817))
-            set_black_pawn.add(i)
+    @staticmethod
+    def make_board():
+        board = [["◻", "◼"] * 4 for i in range(4)]
+        board1 = [["◼", "◻"] * 4 for i in range(4)]
+        big = []
+        for i in range(0, 4):
+            big.append(board1[i])
+            big.append(board[i])
+        return big
 
-    return set_white_pawn, set_black_pawn
 
 
 black_rook_one = Figure("black", "rook", 5, chr(9814))
@@ -125,13 +136,6 @@ black_king = Figure("black", "knig", 10, chr(9812))
 white_king = Figure("white", "knig", 10, chr(9818))
 
 
-def make_board():
-    board = [["◻", "◼"] * 4 for i in range(4)]
-    board1 = [["◼", "◻"] * 4 for i in range(4)]
-    big = []
-    for i in range(0, 4):
-        big.append(board1[i])
-        big.append(board[i])
-    return big
 
-print(Board(make_board(), make_pawn()))
+
+print(Board(Make.make_board(), Make.make_pawn()))
