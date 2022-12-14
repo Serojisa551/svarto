@@ -3,7 +3,7 @@ class Board:
         self.big = big
         index = -1
         element_one = 0
-        for i in pawns[0]:  #
+        for i in pawns[0]:  # TODO(
             index += 1
             if index == 1:
                 self.big[6][element_one] = i.get_u_number()
@@ -14,7 +14,7 @@ class Board:
             index += 1
             if index == 1:
                 self.big[1][element_one] = i.get_u_number()
-            self.big[1][index] = i.get_u_number()  #
+            self.big[1][index] = i.get_u_number()  # )
         self.big[7][3] = white_queen.get_u_number()
         self.big[7][4] = white_king.get_u_number()
         self.big[0][3] = black_queen.get_u_number()
@@ -31,6 +31,11 @@ class Board:
         self.big[7][7] = white_rook_two.get_u_number()
         self.big[0][0] = black_rook_two.get_u_number()
         self.big[0][7] = black_rook_one.get_u_number()
+
+    @staticmethod
+    def check(board, walking_coordinates_y,walking_coordinates_x, element):
+        total = board[walking_coordinates_y][walking_coordinates_x] not in element
+        return total
 
     def __repr__(self):
         res = ""
@@ -71,8 +76,27 @@ class Figure:
         return self.__u_number
 
 
-class Game:
+class User:
     pass
+
+
+class Game:
+    def walk(
+        self,
+        old_bard,
+        location_y,
+        location_x,
+        walking_coordinates_y,
+        walking_coordinates_x,
+    ):
+        if self.big[location_y][location_x] == "♙":
+            if self.check(self.big, walking_coordinates_y, walking_coordinates_x, "♔♕♖♗♘♙"):
+                self.big[walking_coordinates_y][walking_coordinates_x] = "♙"
+                self.big[location_y][location_x] = old_bard[location_y][location_x]
+                return self
+        else:
+            pass
+
 
 class Make:
     @staticmethod
@@ -117,7 +141,6 @@ class Make:
         return big
 
 
-
 black_rook_one = Figure("black", "rook", 5, chr(9814))
 black_rook_two = Figure("black", "rook", 5, chr(9814))
 white_rook_one = Figure("white", "rook", 5, chr(9820))
@@ -137,5 +160,5 @@ white_king = Figure("white", "knig", 10, chr(9818))
 
 
 
-
-print(Board(Make.make_board(), Make.make_pawn()))
+board = Board(Make.make_board(), Make.make_pawn())
+print(Game.walk(board, Make.make_board(), 1, 3, 3, 3))
