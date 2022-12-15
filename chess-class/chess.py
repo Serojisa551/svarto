@@ -32,10 +32,10 @@ class Board:
         self.big[0][0] = black_rook_two.get_u_number()
         self.big[0][7] = black_rook_one.get_u_number()
 
-    @staticmethod
-    def check(board, walking_coordinates_y,walking_coordinates_x, element):
-        total = board[walking_coordinates_y][walking_coordinates_x] not in element
-        return total
+    # @staticmethod
+    # def check(board, walking_coordinates_y,walking_coordinates_x, element):
+    #     total = board[walking_coordinates_y][walking_coordinates_x] not in element
+    #     return total
 
     def __repr__(self):
         res = ""
@@ -76,8 +76,34 @@ class Figure:
         return self.__u_number
 
 
-class User:
-    pass
+class Check:
+    @staticmethod
+    def check_walking_coordinates(walking_coordinates, element):
+        total = walking_coordinates not in element
+        return total
+
+    @staticmethod
+    def check_img(location_element, element):
+        total = location_element == element
+        return total
+
+    @staticmethod
+    def check_coordinates(itr):
+        for element in itr:
+            if 0 > element or element > 7:
+                raise IndentationError(
+                    "You should not be right coordinates '{}'".format(element)
+                )
+        return True
+
+    @staticmethod
+    def check_tpye(itr):
+        for element in itr:
+            if type(element) != int:
+                raise IndentationError(
+                    "You should not be right coordinates '{}'".format(element)
+                )
+        return True
 
 
 class Game:
@@ -88,14 +114,23 @@ class Game:
         location_x,
         walking_coordinates_y,
         walking_coordinates_x,
-    ):
-        if self.big[location_y][location_x] == "♙":
-            if self.check(self.big, walking_coordinates_y, walking_coordinates_x, "♔♕♖♗♘♙"):
+    ):  # TODO(
+        if Check.check_coordinates(
+            (location_y, location_x, walking_coordinates_y, walking_coordinates_x)
+        ):
+            if Check.check_tpye(
+                (location_y, location_x, walking_coordinates_y, walking_coordinates_x)
+            ):
+                pass
+        if Check.check_img(self.big[location_y][location_x], "♙"):
+            if Check.check_walking_coordinates(
+                self.big[walking_coordinates_y][walking_coordinates_x], "♔♕♖♗♘♙"
+            ):
                 self.big[walking_coordinates_y][walking_coordinates_x] = "♙"
                 self.big[location_y][location_x] = old_bard[location_y][location_x]
                 return self
         else:
-            pass
+            pass  # )
 
 
 class Make:
@@ -157,7 +192,6 @@ black_queen = Figure("black", "queen", 9, chr(9813))
 white_queen = Figure("white", "queen", 9, chr(9819))
 black_king = Figure("black", "knig", 10, chr(9812))
 white_king = Figure("white", "knig", 10, chr(9818))
-
 
 
 board = Board(Make.make_board(), Make.make_pawn())
