@@ -1,8 +1,3 @@
-class String:
-    def get_str():
-        return "hello"
-
-
 class Integer:
     def get_int():
         return 123
@@ -17,6 +12,5 @@ class Main:
 
 
 if __name__ == "__main__":
-    obj = String.get_str()
     obj1 = Adapter.cast(Integer)
     Main.get_result(obj1)
