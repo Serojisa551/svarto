@@ -20,6 +20,7 @@ class Linkid_List:
     # def get_head(self):
     #     return self.__head
 
+# TODO(
     def append(self, data):
         new_element = Node(data)
         if self.head == None:
@@ -28,7 +29,8 @@ class Linkid_List:
         current = self.head
         while current.netx:
             current = current.next
-        current.next = new_element
+        current.next = new_element  #)
+
 
 if __name__ == "__main__":
     lst = Linkid_List()
@@ -36,5 +38,3 @@ if __name__ == "__main__":
     print(lst.head)
     lst.append(4)
     print(lst.head)
-
-
