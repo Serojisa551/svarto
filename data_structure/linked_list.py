@@ -1,40 +1,56 @@
 class Node:
     def __init__(self, data, next=None):
-        self.set_data(data)
+        self.data = data
         self.next = next
 
-    def set_data(self, data):
-        self.__data = data
 
-    def get_data(self):
-        return self.__data
-
-
-class Linkid_List:
+class Linked_List:
     def __init__(self):
         self.head = None
 
-    # def set_head(self, head):
-    #     self.__head = head
-
-    # def get_head(self):
-    #     return self.__head
-
-# TODO(
     def append(self, data):
         new_element = Node(data)
         if self.head == None:
-            self.head = new_element.get_data()
+            self.head = new_element
             return
         current = self.head
-        while current.netx:
+        while current.next:
             current = current.next
-        current.next = new_element  #)
+        current.next = new_element
+
+    def len(self):
+        numbers = 0
+        current = self.head
+        while current:
+            numbers += 1
+            current = current.next
+        return numbers
+
+    def pop(self):
+        size = self.len() - 1
+        number = 1
+        current = self.head
+        while current and number != size:
+            current = current.next
+            number += 1
+        current.next = None
+
+    def my_print(self):
+        current = self.head
+        print("[", end="")
+        while current:
+            print(current.data, end=",")
+            current = current.next
+        print("]")
 
 
 if __name__ == "__main__":
-    lst = Linkid_List()
+    lst = Linked_List()
     lst.append(5)
-    print(lst.head)
     lst.append(4)
-    print(lst.head)
+    lst.append(3)
+    lst.append(2)
+    lst.append(1)
+    lst.append(0)
+    lst.pop()
+    lst.my_print()
