@@ -1,0 +1,72 @@
+.myDiv {
+    border: 5px outset rgb(255, 140, 0);
+    background-color: rgb(163, 225, 175);
+    text-align: center;
+}
+
+#homework {
+    background-color: yellow;
+}
+
+* {
+    left: 100px;
+}
+
+p {
+    width: 300px;
+}
+
+p.intro {
+    background-color: rgb(50, 29, 145);
+}
+
+/*  */
+a+img {
+    width: "500";
+    height: "100";
+}
+
+p~ul {
+    background: #4d9336;
+}
+
+article>p {
+    background: #ff0000;
+}
+
+a[target=_blank] {
+    background: #000000;
+}
+
+/*  */
+[title~=flower] {
+    background: #17acba;
+}
+
+[lang |=en] {
+    background: #1eff00;
+}
+
+div[class^="test"] {
+    background: #e8707089;
+}
+
+a:link {
+    color: green;
+}
+
+a:visited {
+    color: rgb(53, 59, 53);
+}
+
+a:hover {
+    color: red;
+}
+
+a:active {
+    color: yellow;
+}
+
+p::after {
+    content: " - Remember this";
+}
