@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let is_who = prompt("Who are you ?");
+        if (is_who == null || is_who == "") {
+            alert("Bye");
+        } else if (is_who == "admin") {
+            let is_password = prompt("Input password please");
+            if (is_password == "admin123") {
+                alert("Hello Boss");
+            } else if (is_password == null || is_password == "") {
+                alert(`Bye ${is_who}`);
+            } else {
+                alert("Incorrect password");
+            }
+        } else {
+            alert("I don't know you")
+        }
+    </script>
+</body>
+
+</html>
